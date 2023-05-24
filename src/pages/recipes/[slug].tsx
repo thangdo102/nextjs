@@ -1,14 +1,17 @@
 import axios from "axios";
 
 export default function OneRecipe({ ingredient }: any) {
+  const ingredients = ingredient?.ingredients.replace(/'/g, '"'); //replacing all ' with "
+
   return (
     <article>
       <h1>{ingredient.recipe}</h1>
       <main className="mainOne">
-        <img src={ingredient.image} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={ingredient.image} alt="" />
         <div className="instruction">
           <ul className="ingredients">
-            {ingredient.ingredients.map((ing: any, index: any) => (
+            {JSON.parse(ingredients).map((ing: any, index: any) => (
               <li className="ingredient" key={index}>
                 {ing}
               </li>
@@ -24,6 +27,7 @@ export default function OneRecipe({ ingredient }: any) {
 export async function getStaticPaths() {
   const res = await axios.get("http://localhost:3001/recipes");
   const recipes = res.data;
+
   const paths = recipes.map((re: any) => ({
     params: { slug: re.slug },
   }));
@@ -38,6 +42,7 @@ export async function getStaticProps({ params }: any) {
   const res = await axios.get(
     `http://localhost:3001/ingredients/${params.slug}`
   );
+
   const ingredient = res.data;
   return { props: { ingredient } };
 }
