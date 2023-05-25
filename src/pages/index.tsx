@@ -13,8 +13,6 @@ export default function Home(props: any) {
         <title>Thang's Kitchen </title>
       </Head>
 
-      <h1>Welcome to Thang's Kitchen</h1>
-
       <ul className="recipes-list">
         {recipes.length > 0 &&
           recipes.map((recipe: any) => (
@@ -31,7 +29,7 @@ export default function Home(props: any) {
 }
 
 export async function getStaticProps(params: any) {
-  const res = await axios.get("http://localhost:3001/recipes");
+  const res = await axios.get(`${process.env.BASE_URL}/recipes`);
   return {
     props: {
       recipes: res.data,

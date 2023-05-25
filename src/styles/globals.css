@@ -94,3 +94,12 @@ h3 {
 .ingredient {
   font-weight: 700;
 }
+
+.header {
+  height: 80px;
+}
+
+.add-button {
+  height: 50px;
+  width: 150px;
+}

@@ -25,7 +25,7 @@ export default function OneRecipe({ ingredient }: any) {
 }
 
 export async function getStaticPaths() {
-  const res = await axios.get("http://localhost:3001/recipes");
+  const res = await axios.get(`${process.env.BASE_URL}/recipes`);
   const recipes = res.data;
 
   const paths = recipes.map((re: any) => ({
@@ -40,7 +40,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const res = await axios.get(
-    `http://localhost:3001/ingredients/${params.slug}`
+    `${process.env.BASE_URL}/ingredients/${params.slug}`
   );
 
   const ingredient = res.data;

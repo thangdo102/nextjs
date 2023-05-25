@@ -1,16 +1,19 @@
+import MainLayout from "@/layout/mainLayout";
+import "bootstrap/dist/css/bootstrap.min.css"; // Import bootstrap CSS
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import { useEffect } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    require("bootstrap/dist/js/bootstrap.bundle.min.js");
+  }, []);
+
   return (
     <div>
-      <p
-        style={{ marginBottom: 50, fontSize: 24, color: "gray", marginTop: 40 }}
-      >
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
-        Thang's Kitchen
-      </p>
-      <Component {...pageProps} />
+      <MainLayout>
+        <Component {...pageProps} />
+      </MainLayout>
     </div>
   );
 }
