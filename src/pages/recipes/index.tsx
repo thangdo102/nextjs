@@ -1,8 +1,10 @@
 // import axios from "axios";
 
-// export default function OneRecipe({ ingredient }: any) {
+export default function OneRecipe({ ingredient }: any) {
 //   const ingredients = ingredient?.ingredients.replace(/'/g, '"'); //replacing all ' with "
 
+
+return (<h1>Recipe</h1>)
 //   return (
 //     <article>
 //       <h1>{ingredient.recipe}</h1>
@@ -22,7 +24,7 @@
 //       </main>
 //     </article>
 //   );
-// }
+}
 
 // export async function getStaticPaths() {
 //   const res = await axios.get(`${process.env.BASE_URL}/recipes`);
